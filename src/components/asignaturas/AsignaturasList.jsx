@@ -3,31 +3,29 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { TablaDatos } from '../TablaDatos';
 
-const AlumnosList = () => {
-  const [alumnos, setAlumnos] = useState([]);
+const AsignaturasList = () => {
+  const [asignaturas, setAsignaturas] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     axios
-      .get('/api/alumnos')
+      .get('/api/asignaturas')
       .then((response) => {
-        setAlumnos(response.data);
+        setAsignaturas(response.data);
       })
       .catch((error) => {
-        console.error('Error obteniendo alumnos');
+        console.error('Error obteniendo asignaturas');
       });
   }, []);
 
   const detalleClick = (id) => {
-    navigate(`/alumnos/${id}`);
+    navigate(`/asignaturas/${id}`);
   };
 
   const columns = [
     { Header: 'ID', accessor: 'id' },
     { Header: 'Nombre', accessor: 'nombre' },
-    { Header: 'Apellidos', accessor: 'apellidos' },
-    { Header: 'Teléfono', accessor: 'telefono' },
-    { Header: 'DNI', accessor: 'dni' },
+    { Header: 'Curso', accessor: 'curso' },
   ];
 
   const actions = [
@@ -40,10 +38,10 @@ const AlumnosList = () => {
 
   return (
     <>
-      <h3>Lista de alumnos</h3>
-      <TablaDatos columns={columns} data={alumnos} actions={actions} />
+      <h3>Lista de asignaturas</h3>
+      <TablaDatos columns={columns} data={asignaturas} actions={actions} />
     </>
   );
 };
 
-export default AlumnosList;
+export default AsignaturasList;
