@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const AlumnosList = () => {
     const [alumnos, setAlumnos] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios
@@ -14,6 +16,10 @@ export const AlumnosList = () => {
                 console.error("Error obteniendo alumnos");
             });
     }, []);
+
+    const handleDetailClick = (id) => {
+        navigate.push('alumnos/${id}');
+    };
 
     return (
         <>

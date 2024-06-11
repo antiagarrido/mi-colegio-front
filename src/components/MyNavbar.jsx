@@ -39,14 +39,14 @@ const MyNavbar = () => {
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">
+                                <a className="nav-link" href="asignaturas">
                                     Asignaturas
                                 </a>
                             </li>
                             <li className="nav-item dropdown">
                                 <a
                                     className="nav-link dropdown-toggle"
-                                    href="#"
+                                    href="trabajadores"
                                     role="button"
                                     data-bs-toggle="dropdown"
                                     aria-expanded="false"
