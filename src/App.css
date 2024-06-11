@@ -1,0 +1,15 @@
+header{
+  height: 10vh;
+}
+
+
+main{
+ height: 80vh; 
+ width: 100vh;
+ text-align: center;
+ margin: auto ;
+}
+
+footer{
+  height: 10vh;
+}
