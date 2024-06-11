@@ -3,7 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 
 function App() {
     return (
@@ -11,9 +11,12 @@ function App() {
             <Header></Header>
             <main>
                 <Routes>
-                    <Route path='/' element={<Home></Home>}></Route>
-                    
-                    <Route path='/*' element={<Navigate to='/'></Navigate>}></Route>
+                    <Route path="/" element={<Home></Home>}></Route>
+
+                    <Route
+                        path="/*"
+                        element={<Navigate to="/"></Navigate>}
+                    ></Route>
                 </Routes>
             </main>
             <Footer></Footer>
