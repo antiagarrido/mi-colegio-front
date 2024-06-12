@@ -18,7 +18,7 @@ const AlumnosList = () => {
       });
   }, []);
 
-  const detalleClick = (id) => {
+  const getDetails = (id) => {
     navigate(`/alumnos/${id}`);
   };
 
@@ -34,7 +34,7 @@ const AlumnosList = () => {
     {
       label: 'Detalles',
       className: 'btn btn-info',
-      onClick: detalleClick,
+      onClick: getDetails,
     },
   ];
 

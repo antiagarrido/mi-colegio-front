@@ -3,8 +3,8 @@ header{
 }
 
 
-main{
- height: 80vh; 
+main{ 
+  min-height: 80vh;
  width: 100vh;
  text-align: center;
  margin: auto ;
@@ -23,4 +23,9 @@ footer{
  max-width: "100%";
  height: "auto"
 
+}
+
+.details{
+  padding:10px;
+  text-align: left;
 }

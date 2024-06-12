@@ -9,6 +9,7 @@ import AlumnoDetail from './components/alumnos/AlumnoDetail';
 import AsignaturasList from './components/asignaturas/AsignaturasList';
 import TrabajadoresList from './components/trabajadores/TrabajadoresList';
 import AsignaturaDetail from './components/asignaturas/AsignaturaDetail';
+import TrabajadorDetail from './components/trabajadores/TrabajadorDetail';
 
 function App() {
   return (
@@ -33,6 +34,10 @@ function App() {
           <Route
             path="/trabajadores"
             element={<TrabajadoresList></TrabajadoresList>}
+          ></Route>
+          <Route
+            path="/trabajadores/:id"
+            element={<TrabajadorDetail></TrabajadorDetail>}
           ></Route>
 
           {<Route path="/*" element={<Navigate to="/"></Navigate>}></Route>}
