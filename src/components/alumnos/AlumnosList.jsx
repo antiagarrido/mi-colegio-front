@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { TablaDatos } from '../TablaDatos';
+import { TablaDatos } from '../comun/TablaDatos';
 
 const AlumnosList = () => {
   const [alumnos, setAlumnos] = useState([]);
