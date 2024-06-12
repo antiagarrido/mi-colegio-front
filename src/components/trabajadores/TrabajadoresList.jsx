@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { TablaDatos } from '../comun/TablaDatos';
+import { DataTable } from '../comun/DataTable';
 
 const TrabajadoresList = () => {
   const [trabajadores, setTrabajadores] = useState([]);
@@ -41,7 +41,7 @@ const TrabajadoresList = () => {
   return (
     <>
       <h3>Lista de trabajadores</h3>
-      <TablaDatos columns={columns} data={trabajadores} actions={actions} />
+      <DataTable columns={columns} data={trabajadores} actions={actions} />
     </>
   );
 };

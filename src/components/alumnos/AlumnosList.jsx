@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { TablaDatos } from '../comun/TablaDatos';
+import { DataTable } from '../comun/DataTable';
 
 const AlumnosList = () => {
   const [alumnos, setAlumnos] = useState([]);
@@ -41,7 +41,7 @@ const AlumnosList = () => {
   return (
     <>
       <h3>Lista de alumnos</h3>
-      <TablaDatos columns={columns} data={alumnos} actions={actions} />
+      <DataTable columns={columns} data={alumnos} actions={actions} />
     </>
   );
 };
