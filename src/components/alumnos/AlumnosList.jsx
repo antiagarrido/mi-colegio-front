@@ -40,8 +40,10 @@ const AlumnosList = () => {
 
   return (
     <>
-      <h3>Lista de alumnos</h3>
-      <DataTable columns={columns} data={alumnos} actions={actions} />
+      <div>
+        <h3>Lista de alumnos</h3>
+        <DataTable columns={columns} data={alumnos} actions={actions} />
+      </div>
     </>
   );
 };

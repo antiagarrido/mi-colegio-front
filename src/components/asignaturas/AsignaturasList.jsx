@@ -38,8 +38,10 @@ const AsignaturasList = () => {
 
   return (
     <>
-      <h3>Lista de asignaturas</h3>
-      <DataTable columns={columns} data={asignaturas} actions={actions} />
+      <div>
+        <h3>Lista de asignaturas</h3>
+        <DataTable columns={columns} data={asignaturas} actions={actions} />
+      </div>
     </>
   );
 };
