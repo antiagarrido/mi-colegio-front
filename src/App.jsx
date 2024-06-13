@@ -11,6 +11,7 @@ import AsignaturasList from './components/asignaturas/AsignaturasList';
 import TrabajadoresList from './components/trabajadores/TrabajadoresList';
 import AsignaturaDetail from './components/asignaturas/AsignaturaDetail';
 import TrabajadorDetail from './components/trabajadores/TrabajadorDetail';
+import TrabajadoresForm from './components/trabajadores/TrabajadoresForm';
 import { AsignaturaForm } from './components/asignaturas/AsignaturaForm';
 
 function App() {
@@ -54,11 +55,11 @@ function App() {
           ></Route>
           <Route
             path="/trabajadores/new"
-            element={<TrabajadorDetail></TrabajadorDetail>}
+            element={<TrabajadoresForm></TrabajadoresForm>}
           ></Route>
           <Route
             path="/trabajadores/edit/:id"
-            element={<TrabajadorDetail></TrabajadorDetail>}
+            element={<TrabajadoresForm></TrabajadoresForm>}
           ></Route>
 
           {<Route path="/*" element={<Navigate to="/"></Navigate>}></Route>}
