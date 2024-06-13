@@ -18,7 +18,7 @@ const AlumnosList = () => {
       });
   }, []);
 
-  const getDetails = (id) => {
+  const detailsAlumno = (id) => {
     navigate(`/alumnos/${id}`);
   };
 
@@ -50,7 +50,7 @@ const AlumnosList = () => {
     {
       label: 'Detalles',
       className: 'btn btn-info',
-      onClick: getDetails,
+      onClick: detailsAlumno,
     },
     {
       label: 'Editar',
