@@ -22,6 +22,22 @@ const AlumnosList = () => {
     navigate(`/alumnos/${id}`);
   };
 
+  const editAlumno = (id) => {
+    navigate(`/alumnos/edit/${id}`);
+  };
+
+  const deleteAlumno = (id) => {
+    if (window.confirm('¿Quieres eliminar este alumno?')) {
+      axios.delete(`/api/alumnos/${id}`).then(() => {
+        setAlumnos(alumnos.filter((alumno) => alumno.id !== id));
+      });
+    }
+  };
+
+  const createAlumno = () => {
+    navigate('/alumnos/new');
+  };
+
   const columns = [
     { Header: 'ID', accessor: 'id' },
     { Header: 'Nombre', accessor: 'nombre' },
@@ -36,13 +52,26 @@ const AlumnosList = () => {
       className: 'btn btn-info',
       onClick: getDetails,
     },
+    {
+      label: 'Editar',
+      className: 'btn btn-warning',
+      onClick: editAlumno,
+    },
+    {
+      label: 'Eliminar',
+      className: 'btn btn-danger',
+      onClick: deleteAlumno,
+    },
   ];
 
   return (
     <>
-      <div>
+      <div className="list">
         <h3>Lista de alumnos</h3>
         <DataTable columns={columns} data={alumnos} actions={actions} />
+        <button className="btn btn-success" onClick={createAlumno}>
+          Nuevo alumno
+        </button>
       </div>
     </>
   );

@@ -29,3 +29,12 @@ footer{
   padding:10px;
   text-align: left;
 }
+
+td .btn{
+  margin: 5px;
+}
+
+.list{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}

@@ -40,7 +40,7 @@ const TrabajadoresList = () => {
 
   return (
     <>
-      <div>
+      <div className='list'>
         <h3>Lista de trabajadores</h3>
         <DataTable columns={columns} data={trabajadores} actions={actions} />
       </div>

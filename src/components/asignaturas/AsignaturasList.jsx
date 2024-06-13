@@ -38,7 +38,7 @@ const AsignaturasList = () => {
 
   return (
     <>
-      <div>
+      <div className='list'>
         <h3>Lista de asignaturas</h3>
         <DataTable columns={columns} data={asignaturas} actions={actions} />
       </div>
