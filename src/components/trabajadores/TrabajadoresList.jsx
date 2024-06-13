@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { DataTable } from '../comun/DataTable';
+import { DataTable } from '../comun/list/DataTable';
 
 const TrabajadoresList = () => {
   const [trabajadores, setTrabajadores] = useState([]);
@@ -18,8 +18,26 @@ const TrabajadoresList = () => {
       });
   }, []);
 
-  const detalleClick = (id) => {
+  const detalleTrabajador = (id) => {
     navigate(`/trabajadores/${id}`);
+  };
+
+  const editTrabajador = (id) => {
+    navigate(`/trabajadores/edit/${id}`);
+  };
+
+  const deleteTrabajador = (id) => {
+    if (window.confirm('¿Quieres eliminar este trabajador?')) {
+      axios.delete(`/api/trabajadores/${id}`).then(() => {
+        setTrabajadores(
+          trabajadores.filter((trabajador) => trabajador.id !== id)
+        );
+      });
+    }
+  };
+
+  const createTrabajador = () => {
+    navigate('/trabajador/new');
   };
 
   const columns = [
@@ -31,16 +49,15 @@ const TrabajadoresList = () => {
   ];
 
   const actions = [
-    {
-      label: 'Detalles',
-      className: 'btn btn-info',
-      onClick: detalleClick,
-    },
+    detalleTrabajador,
+    editTrabajador,
+    deleteTrabajador,
+    createTrabajador,
   ];
 
   return (
     <>
-      <div className='list'>
+      <div className="list">
         <h3>Lista de trabajadores</h3>
         <DataTable columns={columns} data={trabajadores} actions={actions} />
       </div>

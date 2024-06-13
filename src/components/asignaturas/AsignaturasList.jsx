@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { DataTable } from '../comun/DataTable';
+import { DataTable } from '../comun/list/DataTable';
 
 const AsignaturasList = () => {
   const [asignaturas, setAsignaturas] = useState([]);
@@ -18,8 +18,25 @@ const AsignaturasList = () => {
       });
   }, []);
 
-  const detalleClick = (id) => {
+  const detailsAsignatura = (id) => {
     navigate(`/asignaturas/${id}`);
+  };
+  const editAsignatura = (id) => {
+    navigate(`/asignaturas/edit/${id}`);
+  };
+
+  const deleteAsignatura = (id) => {
+    if (window.confirm('¿Quieres eliminar esta asignatura?')) {
+      axios.delete(`/api/asignaturas/${id}`).then(() => {
+        setAsignaturas(
+          asignaturas.filter((asignatura) => asignatura.id !== id)
+        );
+      });
+    }
+  };
+
+  const createAsignatura = () => {
+    navigate('/asignaturas/new');
   };
 
   const columns = [
@@ -29,16 +46,15 @@ const AsignaturasList = () => {
   ];
 
   const actions = [
-    {
-      label: 'Detalles',
-      className: 'btn btn-info',
-      onClick: detalleClick,
-    },
+    detailsAsignatura,
+    editAsignatura,
+    deleteAsignatura,
+    createAsignatura,
   ];
 
   return (
     <>
-      <div className='list'>
+      <div className="list">
         <h3>Lista de asignaturas</h3>
         <DataTable columns={columns} data={asignaturas} actions={actions} />
       </div>

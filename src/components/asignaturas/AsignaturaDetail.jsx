@@ -1,7 +1,7 @@
 import React from 'react';
-import ViewDetails from '../comun/ViewDetails';
+import ViewDetails from '../comun/details/ViewDetails';
 import { useParams } from 'react-router-dom';
-import FetchData from '../comun/FetchData.';
+import FetchData from '../comun/list/FetchData.';
 
 export const AsignaturaDetail = () => {
   const { id } = useParams();

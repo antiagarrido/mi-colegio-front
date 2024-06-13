@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { DataTable } from '../comun/DataTable';
+import { DataTable } from '../comun/list/DataTable';
 
 const AlumnosList = () => {
   const [alumnos, setAlumnos] = useState([]);
@@ -46,32 +46,13 @@ const AlumnosList = () => {
     { Header: 'DNI', accessor: 'dni' },
   ];
 
-  const actions = [
-    {
-      label: 'Detalles',
-      className: 'btn btn-info',
-      onClick: detailsAlumno,
-    },
-    {
-      label: 'Editar',
-      className: 'btn btn-warning',
-      onClick: editAlumno,
-    },
-    {
-      label: 'Eliminar',
-      className: 'btn btn-danger',
-      onClick: deleteAlumno,
-    },
-  ];
+  const actions = [detailsAlumno, editAlumno, deleteAlumno];
 
   return (
     <>
       <div className="list">
         <h3>Lista de alumnos</h3>
         <DataTable columns={columns} data={alumnos} actions={actions} />
-        <button className="btn btn-success" onClick={createAlumno}>
-          Nuevo alumno
-        </button>
       </div>
     </>
   );

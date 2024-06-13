@@ -1,4 +1,5 @@
 import React from 'react';
+import ActionButtons from './ActionButtons';
 
 export const DataTable = ({ columns, data, actions }) => {
   return (
@@ -20,21 +21,20 @@ export const DataTable = ({ columns, data, actions }) => {
               ))}
               {actions && (
                 <td>
-                  {actions.map((action) => (
-                    <button
-                      key={action.label}
-                      className={action.className}
-                      onClick={() => action.onClick(item.id)}
-                    >
-                      {action.label}
-                    </button>
-                  ))}
+                  <ActionButtons
+                    onClickDetail={() => actions[0](item.id)}
+                    onClickEdit={() => actions[1](item.id)}
+                    onClickDelete={() => actions[2](item.id)}
+                  />
                 </td>
               )}
             </tr>
           ))}
         </tbody>
       </table>
+      <button className="btn btn-success" onClick={actions[3]}>
+        <i class="bi bi-plus-square"></i>
+      </button>
     </>
   );
 };
