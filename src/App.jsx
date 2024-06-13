@@ -1,8 +1,8 @@
 import { useState, Navigate } from 'react';
 import './App.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Home from './components/Home';
+import Header from './components/comun/Header';
+import Footer from './components/comun/Footer';
+import Home from './components/comun/Home';
 import { Route, Routes } from 'react-router-dom';
 import AlumnosList from './components/alumnos/AlumnosList';
 import AlumnoDetail from './components/alumnos/AlumnoDetail';
