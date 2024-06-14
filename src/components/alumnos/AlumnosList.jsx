@@ -46,7 +46,7 @@ const AlumnosList = () => {
     { Header: 'DNI', accessor: 'dni' },
   ];
 
-  const actions = [detailsAlumno, editAlumno, deleteAlumno];
+  const actions = [detailsAlumno, editAlumno, deleteAlumno, createAlumno];
 
   return (
     <>

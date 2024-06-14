@@ -2,36 +2,41 @@ import React from 'react';
 import ActionButtons from './ActionButtons';
 
 export const DataTable = ({ columns, data, actions }) => {
+  const renderCell = (row, accessor) => {
+    return accessor.split('.').reduce((acc, part) => acc && acc[part], row);
+  };
+
   return (
     <>
-      <table className="table">
+      <table>
         <thead>
           <tr>
             {columns.map((column) => (
               <th key={column.accessor}>{column.Header}</th>
             ))}
-            {actions && <th>Acciones</th>}
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          {data.map((item) => (
-            <tr key={item.id}>
+          {data.map((row) => (
+            <tr key={[row.id]}>
               {columns.map((column) => (
-                <td key={column.accessor}>{item[column.accessor]}</td>
-              ))}
-              {actions && (
-                <td>
-                  <ActionButtons
-                    onClickDetail={() => actions[0](item.id)}
-                    onClickEdit={() => actions[1](item.id)}
-                    onClickDelete={() => actions[2](item.id)}
-                  />
+                <td key={column.accessor}>
+                  {renderCell(row, column.accessor)}
                 </td>
-              )}
+              ))}
+              <td>
+                <ActionButtons
+                  onClickDetail={() => actions[0](row.id)}
+                  onClickEdit={() => actions[1](row.id)}
+                  onClickDelete={() => actions[2](row.id)}
+                />
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
+
       <button className="btn btn-success" onClick={actions[3]}>
         <i class="bi bi-plus-square"></i>
       </button>

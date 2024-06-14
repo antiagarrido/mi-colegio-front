@@ -37,7 +37,7 @@ const TrabajadoresList = () => {
   };
 
   const createTrabajador = () => {
-    navigate('/trabajador/new');
+    navigate('/trabajadores/new');
   };
 
   const columns = [
@@ -46,6 +46,7 @@ const TrabajadoresList = () => {
     { Header: 'Apellidos', accessor: 'apellidos' },
     { Header: 'Teléfono', accessor: 'telefono' },
     { Header: 'DNI', accessor: 'dni' },
+    { Header: 'Rol', accessor: 'rol.nombre' },
   ];
 
   const actions = [
