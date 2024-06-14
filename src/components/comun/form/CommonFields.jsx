@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const CommonFields = [
   { name: 'nombre', type: 'text', placeholder: 'Nombre', required: true },
   { name: 'apellidos', type: 'text', placeholder: 'Apellidos', required: true },

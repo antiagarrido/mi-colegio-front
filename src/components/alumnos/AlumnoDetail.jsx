@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ViewDetails from '../comun/details/ViewDetails';
 import { useParams } from 'react-router-dom';
-import FetchData from '../comun/list/FetchData.';
+import FetchData from '../comun/details/FetchData.';
 
 const AlumnoDetail = () => {
   const { id } = useParams();
