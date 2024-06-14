@@ -46,7 +46,7 @@ const TrabajadoresList = () => {
     { Header: 'Apellidos', accessor: 'apellidos' },
     { Header: 'Teléfono', accessor: 'telefono' },
     { Header: 'DNI', accessor: 'dni' },
-    { Header: 'Rol', accessor: 'rol.nombre' },
+    { Header: 'Puesto', accessor: 'rol.nombre' },
   ];
 
   const actions = [

@@ -19,6 +19,7 @@ export const TabajadorDetail = () => {
     { name: 'IBAN', key: 'iban' },
     { name: 'Sueldo', key: 'sueldo' },
     { name: 'Antigüedad', key: 'antiguedad' },
+    { name: 'Puesto', key: 'rol.nombre' },
   ];
   return (
     <>

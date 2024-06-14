@@ -15,7 +15,12 @@ export const TrabajadoresForm = () => {
     telefono: '',
     direccion: '',
     dni: '',
+    iban: '',
+    sueldo: '',
+    antiguedad: '',
+    rol: { id: '' },
   });
+  const [roles, setRoles] = useState([]);
 
   const fields = [
     ...CommonFields,
@@ -27,9 +32,23 @@ export const TrabajadoresForm = () => {
       placeholder: 'Antigüedad',
       required: true,
     },
+    {
+      name: 'rol',
+      type: 'select',
+      placeholder: 'Seleccione un Rol',
+      required: true,
+    },
   ];
 
   useEffect(() => {
+    axios.get('/api/roles').then((response) => {
+      const rolesOptions = response.data.map((role) => ({
+        value: role.id,
+        label: role.nombre,
+      }));
+      setRoles(rolesOptions);
+    });
+
     if (id) {
       axios.get(`/api/trabajadores/${id}`).then((response) => {
         setTrabajador(response.data);
@@ -38,7 +57,12 @@ export const TrabajadoresForm = () => {
   }, [id]);
 
   const handleChange = (e) => {
-    setTrabajador({ ...trabajador, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setTrabajador({ ...trabajador, [name]: value });
+  };
+
+  const handleSelectChange = (name, selectedOption) => {
+    setTrabajador({ ...trabajador, [name]: { id: selectedOption.value } });
   };
 
   const handleSubmit = (e) => {
@@ -61,9 +85,12 @@ export const TrabajadoresForm = () => {
         fields={fields}
         data={trabajador}
         handleChange={handleChange}
+        handleSelectChange={handleSelectChange}
         handleSubmit={handleSubmit}
+        selectOptions={roles}
       />
     </div>
   );
 };
+
 export default TrabajadoresForm;
