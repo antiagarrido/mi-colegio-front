@@ -41,11 +41,7 @@ const TrabajadoresList = () => {
   };
 
   const columns = [
-    { Header: 'ID', accessor: 'id' },
-    { Header: 'Nombre', accessor: 'nombre' },
-    { Header: 'Apellidos', accessor: 'apellidos' },
-    { Header: 'Teléfono', accessor: 'telefono' },
-    { Header: 'DNI', accessor: 'dni' },
+    ...CommonColumns,
     { Header: 'Puesto', accessor: 'rol.nombre' },
   ];
 

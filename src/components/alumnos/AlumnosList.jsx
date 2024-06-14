@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { DataTable } from '../comun/list/DataTable';
+import { CommonColumns } from '../comun/list/CommonColumns';
 
 const AlumnosList = () => {
   const [alumnos, setAlumnos] = useState([]);
@@ -38,13 +39,7 @@ const AlumnosList = () => {
     navigate('/alumnos/new');
   };
 
-  const columns = [
-    { Header: 'ID', accessor: 'id' },
-    { Header: 'Nombre', accessor: 'nombre' },
-    { Header: 'Apellidos', accessor: 'apellidos' },
-    { Header: 'Teléfono', accessor: 'telefono' },
-    { Header: 'DNI', accessor: 'dni' },
-  ];
+  const columns = [...CommonColumns];
 
   const actions = [detailsAlumno, editAlumno, deleteAlumno, createAlumno];
 
