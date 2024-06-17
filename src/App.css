@@ -31,6 +31,11 @@ footer{
   text-align: left;
 }
 
+table{
+  border-collapse: separate;
+  border-spacing: 8px;
+}
+
 td .btn{
   margin: 5px;
 }
