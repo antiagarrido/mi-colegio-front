@@ -35,7 +35,7 @@ export const TrabajadoresForm = () => {
     {
       name: 'rol',
       type: 'select',
-      placeholder: 'Seleccione un Rol',
+      placeholder: 'Puesto',
       required: true,
     },
   ];
