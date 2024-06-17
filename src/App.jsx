@@ -13,6 +13,9 @@ import AsignaturaDetail from './components/asignaturas/AsignaturaDetail';
 import TrabajadorDetail from './components/trabajadores/TrabajadorDetail';
 import TrabajadoresForm from './components/trabajadores/TrabajadoresForm';
 import { AsignaturaForm } from './components/asignaturas/AsignaturaForm';
+import RolesList from './components/roles/RolesList';
+import RolDetail from './components/roles/RolDetail';
+import RolForm from './components/roles/RolForm';
 
 function App() {
   return (
@@ -61,6 +64,11 @@ function App() {
             path="/trabajadores/edit/:id"
             element={<TrabajadoresForm></TrabajadoresForm>}
           ></Route>
+
+          <Route path="/roles" element={<RolesList></RolesList>}></Route>
+          <Route path="/roles/:id" element={<RolDetail></RolDetail>}></Route>
+          <Route path="/roles/new" element={<RolForm></RolForm>}></Route>
+          <Route path="/roles/edit/:id" element={<RolForm></RolForm>}></Route>
 
           {<Route path="/*" element={<Navigate to="/"></Navigate>}></Route>}
         </Routes>
