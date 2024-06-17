@@ -38,7 +38,7 @@ export const DataTable = ({ columns, data, actions }) => {
       </table>
 
       <button className="btn btn-success" onClick={actions[3]}>
-        <i class="bi bi-plus-square"></i>
+        <i className="bi bi-plus-square"></i>
       </button>
     </>
   );

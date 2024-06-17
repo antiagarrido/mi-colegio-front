@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { DataTable } from '../comun/list/DataTable';
+import { CommonColumns } from '../comun/list/CommonColumns';
 
 const TrabajadoresList = () => {
   const [trabajadores, setTrabajadores] = useState([]);

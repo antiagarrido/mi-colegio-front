@@ -1,7 +1,7 @@
 import React from 'react';
 import InputField from './InputField';
 import Select from 'react-select';
-import VolverButton from '../../buttons/VolverButton';
+import BackButton from '../../buttons/BackButton';
 
 const Form = ({
   fields,
@@ -45,7 +45,7 @@ const Form = ({
       <button className="btn btn-primary mt-3" type="submit">
         Guardar
       </button>
-      <VolverButton />
+      <BackButton />
     </form>
   );
 };
