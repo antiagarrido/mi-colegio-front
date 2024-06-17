@@ -1,5 +1,6 @@
 import React from 'react';
 import ActionButtons from './ActionButtons';
+import BackButton from '../../buttons/BackButton';
 
 export const DataTable = ({ columns, data, actions }) => {
   const renderCell = (row, accessor) => {
@@ -40,6 +41,8 @@ export const DataTable = ({ columns, data, actions }) => {
       <button className="btn btn-success" onClick={actions[3]}>
         <i className="bi bi-plus-square"></i>
       </button>
+
+      <BackButton />
     </>
   );
 };
