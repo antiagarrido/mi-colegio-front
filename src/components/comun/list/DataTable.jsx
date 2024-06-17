@@ -1,6 +1,7 @@
 import React from 'react';
 import ActionButtons from './ActionButtons';
-import BackButton from '../../buttons/BackButton';
+import BackButton from '../buttons/BackButton';
+import AddButton from '../buttons/AddButton';
 
 export const DataTable = ({ columns, data, actions }) => {
   const renderCell = (row, accessor) => {
@@ -38,11 +39,10 @@ export const DataTable = ({ columns, data, actions }) => {
         </tbody>
       </table>
 
-      <button className="btn btn-success" onClick={actions[3]}>
-        <i className="bi bi-plus-square"></i>
-      </button>
-
-      <BackButton />
+      <div className="buttons">
+        <AddButton onClick={actions[3]} />
+        <BackButton />
+      </div>
     </>
   );
 };

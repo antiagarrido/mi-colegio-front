@@ -1,5 +1,5 @@
 import React from 'react';
-import BackButton from '../../buttons/BackButton';
+import BackButton from '../buttons/BackButton';
 
 export const ViewDetails = ({ data, fields }) => {
   const renderValue = (data, key) => {

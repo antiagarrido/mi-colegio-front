@@ -1,7 +1,7 @@
 import React from 'react';
 import InputField from './InputField';
 import Select from 'react-select';
-import BackButton from '../../buttons/BackButton';
+import BackButton from '../buttons/BackButton';
 
 const Form = ({
   fields,

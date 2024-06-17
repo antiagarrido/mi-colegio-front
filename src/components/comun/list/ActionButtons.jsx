@@ -1,12 +1,19 @@
-import React from 'react'
+import React from 'react';
+import DetailButton from '../buttons/DetailButton';
+import EditButton from '../buttons/EditButton';
+import DeleteButton from '../buttons/DeleteButton';
 
-export const ActionButtons = ({ onClickDetail, onClickEdit, onClickDelete }) => {
+export const ActionButtons = ({
+  onClickDetail,
+  onClickEdit,
+  onClickDelete,
+}) => {
   return (
     <>
-      <button className="btn btn-info" onClick={onClickDetail}> Detalles </button>
-      <button className= 'btn btn-warning' onClick={onClickEdit}> <i class="bi bi-pencil-square"></i></button>
-      <button className= 'btn btn-danger' onClick={onClickDelete}><i class="bi bi-trash3"></i></button>
+      <DetailButton onClick={onClickDetail} />
+      <EditButton onClick={onClickEdit} />
+      <DeleteButton onClick={onClickDelete} />
     </>
   );
-}
+};
 export default ActionButtons;
