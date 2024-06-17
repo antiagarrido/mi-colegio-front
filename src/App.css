@@ -39,3 +39,10 @@ td .btn{
   margin-top: 5%;
   margin-bottom: 5%;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap:10px; 
+
+}
