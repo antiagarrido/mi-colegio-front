@@ -36,11 +36,13 @@ table{
   border-spacing: 8px;
 }
 
-td .btn{
+.btn{
   margin: 5px;
 }
 
-
+ul{
+  list-style: none;
+}
 .list{
   margin-top: 5%;
   margin-bottom: 5%;
@@ -51,4 +53,14 @@ form {
   flex-direction: column;
   gap:10px; 
 
+}
+
+.container{
+  display:flex;
+  justify-content: space-between;
+}
+
+.details .subjects{
+  flex:1;
+  margin:10px;
 }
