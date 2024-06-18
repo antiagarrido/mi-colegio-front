@@ -7,11 +7,11 @@ import FetchData from '../comun/details/FetchData';
 const AlumnoAsignaturas = () => {
   const { id } = useParams();
   const [reload, setReload] = useState(false);
-  const [asignaturas, setAsignaturas] = useState([]);
 
   const columns = [
     { Header: 'ID', accessor: 'id' },
     { Header: 'Nombre', accessor: 'nombre' },
+    { Header: 'Curso', accessor: 'curso' },
   ];
   const deleteAsignaturaAlumno = (asignaturaId) => {
     if (
@@ -34,6 +34,7 @@ const AlumnoAsignaturas = () => {
       <div>
         <h3>Asignaturas del alumno</h3>
         <FetchData
+          key={reload}
           apiPath={`/api/alumnos/${id}/asignaturas`}
           render={(data) => (
             <DataTable columns={columns} data={data} actions={actions} />
