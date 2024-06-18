@@ -60,7 +60,7 @@ form {
   justify-content: space-between;
 }
 
-.details .subjects{
+.details {
   flex:1;
   margin:10px;
 }

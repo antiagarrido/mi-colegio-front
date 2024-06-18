@@ -48,6 +48,7 @@ const AsignaturasList = () => {
   const actions = [
     detailsAsignatura,
     editAsignatura,
+    null,
     deleteAsignatura,
     createAsignatura,
   ];

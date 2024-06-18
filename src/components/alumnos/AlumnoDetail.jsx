@@ -18,20 +18,21 @@ const AlumnoDetail = () => {
 
   return (
     <>
-      <div>
+      <div className="container">
         <FetchData
           apiPath={`/api/alumnos/${id}`}
           render={(data) => (
             <div className="details">
               <h3>Datos del alumno</h3>
               <ViewDetails data={data} fields={fields} />
-
-              <Link to={`/alumnos/${id}/asignaturas`}>
-                <button>Asignaturas del alumno</button>
-              </Link>
             </div>
           )}
         />
+        <div className="detail">
+          <Link to={`/alumnos/${id}/asignaturas`}>
+            <button className="btn btn-info">Asignaturas del alumno</button>
+          </Link>
+        </div>
       </div>
     </>
   );

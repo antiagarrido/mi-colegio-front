@@ -42,7 +42,7 @@ export const RolesList = () => {
     { Header: 'Nombre', accessor: 'nombre' },
   ];
 
-  const actions = [detailsRol, editRol, deleteRol, createRol];
+  const actions = [detailsRol, editRol, null, deleteRol, createRol];
 
   return (
     <>

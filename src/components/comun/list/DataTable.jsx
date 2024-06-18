@@ -31,7 +31,8 @@ export const DataTable = ({ columns, data, actions }) => {
                 <ActionButtons
                   onClickDetail={actions[0] ? () => actions[0](row.id) : null}
                   onClickEdit={actions[1] ? () => actions[1](row.id) : null}
-                  onClickDelete={actions[2] ? () => actions[2](row.id) : null}
+                  onClickAdd={actions[2] ? () => actions[2](row.id) : null}
+                  onClickDelete={actions[3] ? () => actions[3](row.id) : null}
                 />
               </td>
             </tr>
@@ -40,8 +41,8 @@ export const DataTable = ({ columns, data, actions }) => {
       </table>
 
       <div className="buttons">
-        <AddButton onClick={actions[3] ? actions[3] : null} />
-        <BackButton />
+        {actions[4] && <AddButton onClick={actions[4]} />}
+        {actions[4] && <BackButton />}
       </div>
     </>
   );

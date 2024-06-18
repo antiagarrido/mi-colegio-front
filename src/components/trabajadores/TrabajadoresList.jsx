@@ -53,6 +53,7 @@ const TrabajadoresList = () => {
   const actions = [
     detalleTrabajador,
     editTrabajador,
+    null,
     deleteTrabajador,
     createTrabajador,
   ];

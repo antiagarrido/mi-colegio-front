@@ -41,7 +41,7 @@ const AlumnosList = () => {
 
   const columns = [...CommonColumns];
 
-  const actions = [detailsAlumno, editAlumno, deleteAlumno, createAlumno];
+  const actions = [detailsAlumno, editAlumno, null, deleteAlumno, createAlumno];
 
   return (
     <>
