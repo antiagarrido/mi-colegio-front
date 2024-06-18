@@ -41,6 +41,10 @@ const TrabajadoresList = () => {
     navigate('/trabajadores/new');
   };
 
+  const gestionarRoles = () => {
+    navigate(`/roles`);
+  };
+
   const columns = [
     ...CommonColumns,
     { Header: 'Puesto', accessor: 'rol.nombre' },
@@ -58,6 +62,12 @@ const TrabajadoresList = () => {
       <div className="list">
         <h3>Lista de trabajadores</h3>
         <DataTable columns={columns} data={trabajadores} actions={actions} />
+
+        <div>
+          <button className="btn btn-secondary" onClick={gestionarRoles}>
+            Gestionar Roles
+          </button>
+        </div>
       </div>
     </>
   );
