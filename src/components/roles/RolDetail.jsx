@@ -1,7 +1,7 @@
 import React from 'react';
 import ViewDetails from '../comun/details/ViewDetails';
 import { useParams } from 'react-router-dom';
-import FetchData from '../comun/details/FetchData.';
+import FetchData from '../comun/details/FetchData';
 
 export const RolDetail = () => {
   const { id } = useParams();

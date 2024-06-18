@@ -16,6 +16,7 @@ import { AsignaturaForm } from './components/asignaturas/AsignaturaForm';
 import RolesList from './components/roles/RolesList';
 import RolDetail from './components/roles/RolDetail';
 import RolForm from './components/roles/RolForm';
+import AlumnoAsignaturas from './components/alumnos/AlumnoAsignaturas';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           ></Route>
           <Route path="/alumnos/new" element={<AlumnoForm />} />
           <Route path="/alumnos/edit/:id" element={<AlumnoForm />} />
+          <Route path="/alumnos/:id/asignaturas" element={<AlumnoAsignaturas />} />
 
           <Route
             path="/asignaturas"
