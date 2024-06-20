@@ -48,7 +48,13 @@ const TrabajadorAsignaturas = () => {
       });
   };
 
-  const actionsMatriculadas = [null, null, null, deleteAsignaturaTrabajador, null];
+  const actionsMatriculadas = [
+    null,
+    null,
+    null,
+    deleteAsignaturaTrabajador,
+    null,
+  ];
   const actionsDisponibles = [
     null,
     null,
@@ -74,7 +80,7 @@ const TrabajadorAsignaturas = () => {
     <>
       <div className="container">
         <div className="details">
-          <h4>Asignaturas del trabajador</h4>
+          <h4>Asignaturas del profesor</h4>
           <FetchData
             key={reload}
             apiPath={`/api/trabajadores/${id}/asignaturas`}
@@ -102,3 +108,21 @@ const TrabajadorAsignaturas = () => {
 };
 
 export default TrabajadorAsignaturas;
+
+/* import React from 'react';
+import { useParams } from 'react-router-dom';
+import EntityAssignment from '../comun/EntityAssignment';
+
+const TrabajadorAsignaturas = () => {
+  const { id } = useParams();
+
+  return (
+    <EntityAssignment
+      entidadId={id}
+      tipoEntidad="trabajadores"
+      tipoEntidadRelacionada="asignaturas"
+    />
+  );
+};
+
+export default TrabajadorAsignaturas; */
