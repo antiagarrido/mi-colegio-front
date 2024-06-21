@@ -1,22 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DataTable } from '../comun/list/DataTable';
+import FetchData from '../comun/FetchData';
 
 const AsignaturasList = () => {
-  const [asignaturas, setAsignaturas] = useState([]);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    axios
-      .get('/api/asignaturas')
-      .then((response) => {
-        setAsignaturas(response.data);
-      })
-      .catch((error) => {
-        console.error('Error obteniendo asignaturas');
-      });
-  }, []);
 
   const detailsAsignatura = (id) => {
     navigate(`/asignaturas/${id}`);
@@ -54,12 +42,17 @@ const AsignaturasList = () => {
   ];
 
   return (
-    <>
-      <div className="list">
-        <h3>Lista de asignaturas</h3>
-        <DataTable columns={columns} data={asignaturas} actions={actions} />
-      </div>
-    </>
+    <FetchData
+      apiPath="/api/asignaturas"
+      render={(asignaturas) => (
+        <>
+          <div className="list">
+            <h3>Lista de asignaturas</h3>
+            <DataTable columns={columns} data={asignaturas} actions={actions} />
+          </div>
+        </>
+      )}
+    />
   );
 };
 

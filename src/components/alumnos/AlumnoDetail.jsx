@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ViewDetails from '../comun/details/ViewDetails';
 import { useParams, Link } from 'react-router-dom';
-import FetchData from '../comun/details/FetchData';
+import FetchData from '../comun/FetchData';
 import CommonFieldsDetails from '../comun/details/CommonFieldsDetails';
 
 const AlumnoDetail = () => {

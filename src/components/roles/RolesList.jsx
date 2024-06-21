@@ -2,21 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { DataTable } from '../comun/list/DataTable';
+import FetchData from '../comun/FetchData';
 
 export const RolesList = () => {
-  const [roles, setRoles] = useState([]);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    axios
-      .get('/api/roles')
-      .then((response) => {
-        setRoles(response.data);
-      })
-      .catch((error) => {
-        console.error('Error obteniendo roles');
-      });
-  }, []);
 
   const detailsRol = (id) => {
     navigate(`/roles/${id}`);
@@ -26,8 +15,8 @@ export const RolesList = () => {
   };
 
   const deleteRol = (id) => {
-    if (window.confirm('¿Quieres eliminar esta rol?')) {
-      axios.delete(`/api/roles/${id}`).then(() => {
+    if (window.confirm('¿Quieres eliminar este rol?')) {
+      axios.delete(`/api/roles/${id}`).then((roles) => {
         setRoles(roles.filter((rol) => rol.id !== id));
       });
     }
@@ -45,12 +34,17 @@ export const RolesList = () => {
   const actions = [detailsRol, editRol, null, deleteRol, createRol];
 
   return (
-    <>
-      <div className="list">
-        <h3>Lista de roles</h3>
-        <DataTable columns={columns} data={roles} actions={actions} />
-      </div>
-    </>
+    <FetchData
+      apiPath="/api/roles"
+      render={(roles) => (
+        <>
+          <div className="list">
+            <h3>Lista de roles</h3>
+            <DataTable columns={columns} data={roles} actions={actions} />
+          </div>
+        </>
+      )}
+    />
   );
 };
 

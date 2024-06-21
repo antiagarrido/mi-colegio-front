@@ -3,21 +3,10 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { DataTable } from '../comun/list/DataTable';
 import { CommonColumns } from '../comun/list/CommonColumns';
+import FetchData from '../comun/FetchData';
 
 const AlumnosList = () => {
-  const [alumnos, setAlumnos] = useState([]);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    axios
-      .get('/api/alumnos')
-      .then((response) => {
-        setAlumnos(response.data);
-      })
-      .catch((error) => {
-        console.error('Error obteniendo alumnos');
-      });
-  }, []);
 
   const detailsAlumno = (id) => {
     navigate(`/alumnos/${id}`);
@@ -29,7 +18,7 @@ const AlumnosList = () => {
 
   const deleteAlumno = (id) => {
     if (window.confirm('¿Quieres eliminar este alumno?')) {
-      axios.delete(`/api/alumnos/${id}`).then(() => {
+      axios.delete(`/api/alumnos/${id}`).then((alumnos) => {
         setAlumnos(alumnos.filter((alumno) => alumno.id !== id));
       });
     }
@@ -44,12 +33,17 @@ const AlumnosList = () => {
   const actions = [detailsAlumno, editAlumno, null, deleteAlumno, createAlumno];
 
   return (
-    <>
-      <div className="list">
-        <h3>Lista de alumnos</h3>
-        <DataTable columns={columns} data={alumnos} actions={actions} />
-      </div>
-    </>
+    <FetchData
+      apiPath="/api/alumnos"
+      render={(alumnos) => (
+        <>
+          <div className="list">
+            <h3>Lista de alumnos</h3>
+            <DataTable columns={columns} data={alumnos} actions={actions} />
+          </div>
+        </>
+      )}
+    />
   );
 };
 

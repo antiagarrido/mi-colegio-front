@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import DataTable from '../comun/list/DataTable';
-import FetchData from '../comun/details/FetchData';
+import FetchData from '../comun/FetchData';
 import BackButton from '../comun/buttons/BackButton';
 
 const TrabajadorAsignaturas = () => {

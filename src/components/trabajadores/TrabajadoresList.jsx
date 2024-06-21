@@ -3,21 +3,10 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { DataTable } from '../comun/list/DataTable';
 import { CommonColumns } from '../comun/list/CommonColumns';
+import FetchData from '../comun/FetchData';
 
 const TrabajadoresList = () => {
-  const [trabajadores, setTrabajadores] = useState([]);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    axios
-      .get('/api/trabajadores')
-      .then((response) => {
-        setTrabajadores(response.data);
-      })
-      .catch((error) => {
-        console.error('Error obteniendo trabajadores');
-      });
-  }, []);
 
   const detalleTrabajador = (id) => {
     navigate(`/trabajadores/${id}`);
@@ -29,7 +18,7 @@ const TrabajadoresList = () => {
 
   const deleteTrabajador = (id) => {
     if (window.confirm('¿Quieres eliminar este trabajador?')) {
-      axios.delete(`/api/trabajadores/${id}`).then(() => {
+      axios.delete(`/api/trabajadores/${id}`).then((trabajadores) => {
         setTrabajadores(
           trabajadores.filter((trabajador) => trabajador.id !== id)
         );
@@ -59,18 +48,27 @@ const TrabajadoresList = () => {
   ];
 
   return (
-    <>
-      <div className="list">
-        <h3>Lista de trabajadores</h3>
-        <DataTable columns={columns} data={trabajadores} actions={actions} />
+    <FetchData
+      apiPath="/api/trabajadores"
+      render={(trabajadores) => (
+        <>
+          <div className="list">
+            <h3>Lista de trabajadores</h3>
+            <DataTable
+              columns={columns}
+              data={trabajadores}
+              actions={actions}
+            />
 
-        <div>
-          <button className="btn btn-secondary" onClick={gestionarRoles}>
-            Gestionar Roles
-          </button>
-        </div>
-      </div>
-    </>
+            <div>
+              <button className="btn btn-secondary" onClick={gestionarRoles}>
+                Gestionar Roles
+              </button>
+            </div>
+          </div>
+        </>
+      )}
+    />
   );
 };
 
