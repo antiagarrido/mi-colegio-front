@@ -2,32 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Form from '../comun/form/Form';
+import FetchData from '../comun/FetchData';
 
 export const RolForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [rol, setRol] = useState({
-    nombre: '',
-    curso: '',
-  });
 
   const fields = [
     { name: 'nombre', type: 'text', placeholder: 'Nombre', required: true },
   ];
 
-  useEffect(() => {
-    if (id) {
-      axios.get(`/api/roles/${id}`).then((response) => {
-        setRol(response.data);
-      });
-    }
-  }, [id]);
-
-  const handleChange = (e) => {
+  const handleChange = (rol, setRol) => (e) => {
     setRol({ ...rol, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (rol, setRol) => (e) => {
     e.preventDefault();
     if (id) {
       axios.put(`/api/roles`, rol).then(() => {
@@ -41,15 +30,20 @@ export const RolForm = () => {
   };
 
   return (
-    <div>
-      <h3>{id ? 'Editar Rol' : 'Nueva Rol'}</h3>
-      <Form
-        fields={fields}
-        data={rol}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-      />
-    </div>
+    <FetchData
+      apiPath={`api/roles/${id || ''}`}
+      render={(rol, setRol) => (
+        <div>
+          <h3>{id ? 'Editar Rol' : 'Nuevo Rol'}</h3>
+          <Form
+            fields={fields}
+            data={rol}
+            handleChange={handleChange(rol, setRol)}
+            handleSubmit={handleSubmit(rol, setRol)}
+          />
+        </div>
+      )}
+    />
   );
 };
 

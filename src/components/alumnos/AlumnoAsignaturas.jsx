@@ -57,12 +57,6 @@ const AlumnoAsignaturas = () => {
     null,
   ];
 
-  useEffect(() => {
-    axios.get(`/api/alumnos/${id}/asignaturas`).then((response) => {
-      setAsignaturasMatriculadas(response.data);
-    });
-  }, [reload]);
-
   const asignaturasDisponibles = asignaturas.filter(
     (asignatura) =>
       !asignaturasMatriculadas.some(
