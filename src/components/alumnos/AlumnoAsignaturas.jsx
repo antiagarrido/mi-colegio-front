@@ -1,4 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import EntityAssignment from '../comun/EntityAssignment';
+
+const AlumnoAsignaturas = () => {
+  const { id } = useParams();
+
+  return (
+    <EntityAssignment
+      entidadId={id}
+      tipoEntidad="alumnos"
+      tipoEntidadRelacionada="asignaturas"
+    />
+  );
+};
+
+export default AlumnoAsignaturas;
+
+/* import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import DataTable from '../comun/list/DataTable';
@@ -96,3 +114,4 @@ const AlumnoAsignaturas = () => {
 };
 
 export default AlumnoAsignaturas;
+ */

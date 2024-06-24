@@ -1,4 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import EntityAssignment from '../comun/EntityAssignment';
+
+const TrabajadorAsignaturas = () => {
+  const { id } = useParams();
+
+  return (
+    <EntityAssignment
+      entidadId={id}
+      tipoEntidad="trabajadores"
+      tipoEntidadRelacionada="asignaturas"
+    />
+  );
+};
+
+export default TrabajadorAsignaturas;
+
+/*import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import DataTable from '../comun/list/DataTable';
@@ -104,24 +122,6 @@ const TrabajadorAsignaturas = () => {
         </div>
       </div>
     </>
-  );
-};
-
-export default TrabajadorAsignaturas;
-
-/* import React from 'react';
-import { useParams } from 'react-router-dom';
-import EntityAssignment from '../comun/EntityAssignment';
-
-const TrabajadorAsignaturas = () => {
-  const { id } = useParams();
-
-  return (
-    <EntityAssignment
-      entidadId={id}
-      tipoEntidad="trabajadores"
-      tipoEntidadRelacionada="asignaturas"
-    />
   );
 };
 
