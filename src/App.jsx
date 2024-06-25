@@ -27,69 +27,32 @@ function App() {
       <Header></Header>
       <main>
         <Routes>
-          <Route path="/" element={<Home></Home>}></Route>
-          <Route path="/alumnos" element={<AlumnosList></AlumnosList>}></Route>
-          <Route
-            path="/alumnos/:id"
-            element={<AlumnoDetail></AlumnoDetail>}
-          ></Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/alumnos" element={<AlumnosList />} />
+          <Route path="/alumnos/:id" element={<AlumnoDetail />} />
           <Route path="/alumnos/new" element={<AlumnoForm />} />
           <Route path="/alumnos/edit/:id" element={<AlumnoForm />} />
-          <Route
-            path="/alumnos/:id/asignaturas"
-            element={<AlumnoAsignaturas />}
-          />
-
-          <Route
-            path="/alumnos/:id/asignaturas/:asignaturaId"
-            element={<AlumnoAsignaturaDetail />}
-          />
-
+          <Route path="/alumnos/:id/asignaturas" element={<AlumnoAsignaturas />}/>
+          <Route path="/alumnos/:id/asignaturas/:asignaturaId"element={<AlumnoAsignaturaDetail />}/>
           <Route path="/alumnos/:id/notas" element={<AlumnoNotas />} />
 
-          <Route
-            path="/asignaturas"
-            element={<AsignaturasList></AsignaturasList>}
-          ></Route>
-          <Route
-            path="/asignaturas/:id"
-            element={<AsignaturaDetail></AsignaturaDetail>}
-          ></Route>
-          <Route
-            path="/asignaturas/new"
-            element={<AsignaturaForm></AsignaturaForm>}
-          ></Route>
-          <Route
-            path="/asignaturas/edit/:id"
-            element={<AsignaturaForm></AsignaturaForm>}
-          ></Route>
-          <Route
-            path="/trabajadores"
-            element={<TrabajadoresList></TrabajadoresList>}
-          ></Route>
-          <Route
-            path="/trabajadores/:id"
-            element={<TrabajadorDetail></TrabajadorDetail>}
-          ></Route>
-          <Route
-            path="/trabajadores/new"
-            element={<TrabajadoresForm></TrabajadoresForm>}
-          ></Route>
-          <Route
-            path="/trabajadores/edit/:id"
-            element={<TrabajadoresForm></TrabajadoresForm>}
-          ></Route>
-          <Route
-            path="/trabajadores/:id/asignaturas"
-            element={<TrabajadoresAsignaturas />}
-          />
+          <Route path="/asignaturas" element={<AsignaturasList />} />
+          <Route path="/asignaturas/:id" element={<AsignaturaDetail />} />
+          <Route path="/asignaturas/new" element={<AsignaturaForm />} />
+          <Route path="/asignaturas/edit/:id" element={<AsignaturaForm />} />
 
-          <Route path="/roles" element={<RolesList></RolesList>}></Route>
-          <Route path="/roles/:id" element={<RolDetail></RolDetail>}></Route>
-          <Route path="/roles/new" element={<RolForm></RolForm>}></Route>
-          <Route path="/roles/edit/:id" element={<RolForm></RolForm>}></Route>
+          <Route path="/trabajadores" element={<TrabajadoresList />} />
+          <Route path="/trabajadores/:id" element={<TrabajadorDetail />} />
+          <Route path="/trabajadores/new" element={<TrabajadoresForm />} />
+          <Route path="/trabajadores/edit/:id" element={<TrabajadoresForm />} />
+          <Route path="/trabajadores/:id/asignaturas" element={<TrabajadoresAsignaturas />}/>
 
-          {<Route path="/*" element={<Navigate to="/"></Navigate>}></Route>}
+          <Route path="/roles" element={<RolesList />} />
+          <Route path="/roles/:id" element={<RolDetail />} />
+          <Route path="/roles/new" element={<RolForm />} />
+          <Route path="/roles/edit/:id" element={<RolForm />} />
+
+          {<Route path="/*" element={<Navigate to="/" />} />}
         </Routes>
       </main>
       <Footer></Footer>
