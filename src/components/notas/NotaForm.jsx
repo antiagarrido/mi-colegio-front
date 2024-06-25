@@ -2,34 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Form from '../comun/form/Form';
+import FetchData from '../comun/FetchData';
 
 const NotaForm = () => {
   const { alumnoId, asignaturaId } = useParams();
-  const [alumnos, setAlumnos] = useState([]);
-  const [asignaturas, setAsignaturas] = useState([]);
   const [nota, setNota] = useState('');
   const [isUpdating, setIsUpdating] = useState(false);
-
-
-  useEffect(() => {
-    axios
-      .get('/alumnoAsignatura/alumnos')
-      .then((response) => setAlumnos(response.data))
-      .catch((error) => console.error('Error obteniendo  alumnos:', error));
-  }, []);
-
-  useEffect(() => {
-    if (alumnoId) {
-      axios
-        .get(`/alumnoAsignatura/alumnos/${alumnoId}`)
-        .then((response) => setAsignaturas(response.data))
-        .catch((error) =>
-          console.error('Error obnteniendo asignaturas:', error)
-        );
-    } else {
-      setAsignaturas([]);
-    }
-  }, [alumnoId]);
 
   useEffect(() => {
     if (alumnoId && asignaturaId) {
@@ -40,7 +18,7 @@ const NotaForm = () => {
           const notaData = response.data;
           setNota(notaData.nota);
         })
-        .catch((error) => console.error('Error fetching nota:', error));
+        .catch((error) => console.error('Error obteniendo nota:', error));
     }
   }, [alumnoId, asignaturaId]);
 
@@ -60,11 +38,11 @@ const NotaForm = () => {
       : axios.post('/notas', newNota);
 
     request
-      .then((response) => {
+      .then(() => {
         alert('Nota guardada con éxito');
       })
       .catch((error) => {
-        console.error('Error saving nota:', error);
+        console.error('Error guardando la nota:', error);
         alert('Error guardando la nota');
       });
   };
@@ -97,33 +75,54 @@ const NotaForm = () => {
     { name: 'nota', type: 'number', placeholder: 'Nota', required: true },
   ];
 
-  const selectOptions = alumnos
-    .map((alumno) => ({
+  const selectOptions = (alumnos, asignaturas) => {
+    const alumnoOptions = alumnos.map((alumno) => ({
       value: alumno.id,
       label: alumno.nombre,
-    }))
-    .concat(
-      asignaturas.map((asignatura) => ({
-        value: asignatura.id,
-        label: asignatura.nombre,
-      }))
-    );
+    }));
 
- const data = {
-    alumno_id: alumnoId,
-    asignatura_id: asignaturaId,
-    nota: nota,
+    const asignaturaOptions = asignaturas.map((asignatura) => ({
+      value: asignatura.id,
+      label: asignatura.nombre,
+    }));
+
+    return { alumnoOptions, asignaturaOptions };
   };
 
   return (
-    <Form
-      fields={fields}
-      data={data}
-      handleChange={handleChange}
-      handleSelectChange={handleSelectChange}
-      handleSubmit={handleSubmit}
-      selectOptions={selectOptions}
-    />
+    <div>
+      <FetchData
+        apiPath="/alumnoAsignatura/alumnos"
+        render={(alumnos) => (
+          <FetchData
+            apiPath={`/alumnoAsignatura/alumnos/${alumnoId}`}
+            render={(asignaturas) => {
+              const { alumnoOptions, asignaturaOptions } = selectOptions(
+                alumnos,
+                asignaturas
+              );
+
+              const data = {
+                alumno_id: alumnoId,
+                asignatura_id: asignaturaId,
+                nota: nota,
+              };
+
+              return (
+                <Form
+                  fields={fields}
+                  data={data}
+                  handleChange={handleChange}
+                  handleSelectChange={handleSelectChange}
+                  handleSubmit={handleSubmit}
+                  selectOptions={[...alumnoOptions, ...asignaturaOptions]}
+                />
+              );
+            }}
+          />
+        )}
+      />
+    </div>
   );
 };
 
