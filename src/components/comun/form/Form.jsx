@@ -15,7 +15,7 @@ const Form = ({
     <form onSubmit={handleSubmit}>
       {fields.map((field) =>
         field.type === 'select' ? (
-          <div key={field.name}>
+          <div key={field.name}>                                                                                                                       
             <label>{field.placeholder}</label>
             <Select
               name={field.name}

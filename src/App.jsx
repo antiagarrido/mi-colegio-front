@@ -14,6 +14,7 @@ import Header from './components/comun/Header';
 import Home from './components/comun/Home';
 import NotasAlumno from './components/notas/NotasAlumno';
 import NotasAsignatura from './components/notas/NotasAsignatura';
+import NotaForm from './components/notas/NotaForm';
 import RolDetail from './components/roles/RolDetail';
 import RolForm from './components/roles/RolForm';
 import RolesList from './components/roles/RolesList';
@@ -62,6 +63,11 @@ function App() {
           <Route path="/roles/:id" element={<RolDetail />} />
           <Route path="/roles/new" element={<RolForm />} />
           <Route path="/roles/edit/:id" element={<RolForm />} />
+
+          <Route
+            path="/nota/edit/:alumnoId/:asignaturaId"
+            element={<NotaForm />}
+          />
 
           {<Route path="/*" element={<Navigate to="/" />} />}
         </Routes>

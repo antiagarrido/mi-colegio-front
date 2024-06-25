@@ -24,7 +24,7 @@ export const NotasAsignatura = () => {
   }, [id]);
 
   const editNota = (alumnoId) => {
-    navigate(`/nota/${alumnoId}/${id}`);
+    navigate(`/nota/edit/${alumnoId}/${id}`);
   };
 
   const deleteNota = async (alumnoId) => {
