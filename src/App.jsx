@@ -12,7 +12,7 @@ import AsignaturasList from './components/asignaturas/AsignaturasList';
 import Footer from './components/comun/Footer';
 import Header from './components/comun/Header';
 import Home from './components/comun/Home';
-import AlumnoNotas from './components/notas/AlumnoNotas';
+import NotasAlumno from './components/notas/NotasAlumno';
 import RolDetail from './components/roles/RolDetail';
 import RolForm from './components/roles/RolForm';
 import RolesList from './components/roles/RolesList';
@@ -32,9 +32,15 @@ function App() {
           <Route path="/alumnos/:id" element={<AlumnoDetail />} />
           <Route path="/alumnos/new" element={<AlumnoForm />} />
           <Route path="/alumnos/edit/:id" element={<AlumnoForm />} />
-          <Route path="/alumnos/:id/asignaturas" element={<AlumnoAsignaturas />}/>
-          <Route path="/alumnos/:id/asignaturas/:asignaturaId"element={<AlumnoAsignaturaDetail />}/>
-          <Route path="/alumnos/:id/notas" element={<AlumnoNotas />} />
+          <Route
+            path="/alumnos/:id/asignaturas"
+            element={<AlumnoAsignaturas />}
+          />
+          <Route
+            path="/alumnos/:id/asignaturas/:asignaturaId"
+            element={<AlumnoAsignaturaDetail />}
+          />
+          <Route path="/alumnos/:id/notas" element={<NotasAlumno />} />
 
           <Route path="/asignaturas" element={<AsignaturasList />} />
           <Route path="/asignaturas/:id" element={<AsignaturaDetail />} />
@@ -45,7 +51,10 @@ function App() {
           <Route path="/trabajadores/:id" element={<TrabajadorDetail />} />
           <Route path="/trabajadores/new" element={<TrabajadoresForm />} />
           <Route path="/trabajadores/edit/:id" element={<TrabajadoresForm />} />
-          <Route path="/trabajadores/:id/asignaturas" element={<TrabajadoresAsignaturas />}/>
+          <Route
+            path="/trabajadores/:id/asignaturas"
+            element={<TrabajadoresAsignaturas />}
+          />
 
           <Route path="/roles" element={<RolesList />} />
           <Route path="/roles/:id" element={<RolDetail />} />

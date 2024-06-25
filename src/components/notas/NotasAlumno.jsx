@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import FetchData from '../comun/FetchData';
 import { DataTable } from '../comun/list/DataTable';
 
-export const AlumnoNotas = () => {
+export const NotasAlumno = () => {
   const { id } = useParams();
 
   const columns = [
@@ -40,4 +40,4 @@ export const AlumnoNotas = () => {
   );
 };
 
-export default AlumnoNotas;
+export default NotasAlumno;
