@@ -13,7 +13,7 @@ export const NotasAsignatura = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/notas/alumno/${id}`);
+        const response = await axios.get(`/api/notas/asignatura/${id}`);
         setNotas(response.data);
       } catch (error) {
         console.error('Error :', error);
@@ -23,20 +23,18 @@ export const NotasAsignatura = () => {
     fetchData();
   }, [id]);
 
-  const editNota = (asignaturaId) => {
-    navigate(`/nota/${asignaturaId}/${id}`);
+  const editNota = (alumnoId) => {
+    navigate(`/nota/${alumnoId}/${id}`);
   };
 
-  const deleteNota = async (asignaturaId) => {
+  const deleteNota = async (alumnoId) => {
     if (window.confirm('¿Quieres eliminar esta nota?')) {
       try {
         await axios.delete('/api/notas', {
-          data: { asignatura_id: asignaturaId, alumno_id: id },
+          data: { asignatura_id: id, alumno_id: alumnoId },
         });
         setNotas(
-          notas.filter(
-            (nota) => nota.alumnoAsignatura.asignatura.id !== asignaturaId
-          )
+          notas.filter((nota) => nota.alumnoAsignatura.alumno.id !== alumnoId)
         );
       } catch (error) {
         console.error('Error eliminando la  nota:', error);
@@ -55,28 +53,26 @@ export const NotasAsignatura = () => {
         <table>
           <thead>
             <tr>
-              <th>Asignatura</th>
-              <th>Curso</th>
+              <th>ID Alumno</th>
+              <th>Alumno</th>
+              <th>Apellidos</th>
               <th>Nota</th>
               <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
             {notas.map((nota) => (
-              <tr key={nota.alumnoAsignatura.asignatura.id}>
-                <td>{nota.alumnoAsignatura.asignatura.nombre}</td>
-                <td>{nota.alumnoAsignatura.asignatura.curso}</td>
+              <tr key={nota.alumnoAsignatura.alumno.id}>
+                <td>{nota.alumnoAsignatura.alumno.id}</td>
+                <td>{nota.alumnoAsignatura.alumno.nombre}</td>
+                <td>{nota.alumnoAsignatura.alumno.apellidos}</td>
                 <td>{nota.nota}</td>
                 <td>
                   <EditButton
-                    onClick={() =>
-                      editNota(nota.alumnoAsignatura.asignatura.id)
-                    }
+                    onClick={() => editNota(nota.alumnoAsignatura.alumno.id)}
                   />
                   <DeleteButton
-                    onClick={() =>
-                      deleteNota(nota.alumnoAsignatura.asignatura.id)
-                    }
+                    onClick={() => deleteNota(nota.alumnoAsignatura.alumno.id)}
                   />
                 </td>
               </tr>

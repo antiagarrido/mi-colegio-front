@@ -13,6 +13,7 @@ import Footer from './components/comun/Footer';
 import Header from './components/comun/Header';
 import Home from './components/comun/Home';
 import NotasAlumno from './components/notas/NotasAlumno';
+import NotasAsignatura from './components/notas/NotasAsignatura';
 import RolDetail from './components/roles/RolDetail';
 import RolForm from './components/roles/RolForm';
 import RolesList from './components/roles/RolesList';
@@ -46,6 +47,7 @@ function App() {
           <Route path="/asignaturas/:id" element={<AsignaturaDetail />} />
           <Route path="/asignaturas/new" element={<AsignaturaForm />} />
           <Route path="/asignaturas/edit/:id" element={<AsignaturaForm />} />
+          <Route path="/asignaturas/:id/notas" element={<NotasAsignatura />} />
 
           <Route path="/trabajadores" element={<TrabajadoresList />} />
           <Route path="/trabajadores/:id" element={<TrabajadorDetail />} />

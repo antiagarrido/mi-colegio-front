@@ -20,7 +20,7 @@ const AlumnoDetail = () => {
             </div>
           )}
         />
-        <div className="detail">
+        <div className="details">
           <div>
             <Link to={`/alumnos/${id}/asignaturas`}>
               <button className="btn btn-info">Asignaturas del alumno</button>
