@@ -1,25 +1,25 @@
-import { useState, Navigate } from 'react';
-import './App.css';
-import Header from './components/comun/Header';
-import Footer from './components/comun/Footer';
-import Home from './components/comun/Home';
+import { Navigate } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import AlumnosList from './components/alumnos/AlumnosList';
+import './App.css';
+import AlumnoAsignaturaDetail from './components/alumnos/AlumnoAsignaturaDetail';
+import AlumnoAsignaturas from './components/alumnos/AlumnoAsignaturas';
 import AlumnoDetail from './components/alumnos/AlumnoDetail';
 import AlumnoForm from './components/alumnos/AlumnoForm';
-import AsignaturasList from './components/asignaturas/AsignaturasList';
-import TrabajadoresList from './components/trabajadores/TrabajadoresList';
+import AlumnosList from './components/alumnos/AlumnosList';
 import AsignaturaDetail from './components/asignaturas/AsignaturaDetail';
-import TrabajadorDetail from './components/trabajadores/TrabajadorDetail';
-import TrabajadoresForm from './components/trabajadores/TrabajadoresForm';
-import TrabajadoresAsignaturas from './components/trabajadores/TrabajadorAsignaturas';
-import { AsignaturaForm } from './components/asignaturas/AsignaturaForm';
-import RolesList from './components/roles/RolesList';
+import AsignaturaForm from './components/asignaturas/AsignaturaForm';
+import AsignaturasList from './components/asignaturas/AsignaturasList';
+import Footer from './components/comun/Footer';
+import Header from './components/comun/Header';
+import Home from './components/comun/Home';
+import AlumnoNotas from './components/notas/AlumnoNotas';
 import RolDetail from './components/roles/RolDetail';
 import RolForm from './components/roles/RolForm';
-import AlumnoAsignaturas from './components/alumnos/AlumnoAsignaturas';
-import AlumnoAsignaturaDetail from './components/alumnos/AlumnoAsignaturaDetail';
-import AlumnoNotas from './components/notas/AlumnoNotas';
+import RolesList from './components/roles/RolesList';
+import TrabajadoresAsignaturas from './components/trabajadores/TrabajadorAsignaturas';
+import TrabajadorDetail from './components/trabajadores/TrabajadorDetail';
+import TrabajadoresForm from './components/trabajadores/TrabajadoresForm';
+import TrabajadoresList from './components/trabajadores/TrabajadoresList';
 
 function App() {
   return (
