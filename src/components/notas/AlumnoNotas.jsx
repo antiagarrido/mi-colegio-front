@@ -26,10 +26,14 @@ export const AlumnoNotas = () => {
       apiPath={`/api/notas/alumno/${id}`}
       render={(notas) => (
         <>
-          <div className="list">
-            <h3>Lista de notas del alumno </h3>
-            <DataTable columns={columns} data={notas} actions={actions} />
-          </div>
+          {notas.length > 0 ? (
+            <div className="list">
+              <h3>Lista de notas del alumno </h3>
+              <DataTable columns={columns} data={notas} actions={actions} />
+            </div>
+          ) : (
+            <h3>Este alumno no tiene notas todavía</h3>
+          )}
         </>
       )}
     />
