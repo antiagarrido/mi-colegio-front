@@ -18,6 +18,8 @@ import RolesList from './components/roles/RolesList';
 import RolDetail from './components/roles/RolDetail';
 import RolForm from './components/roles/RolForm';
 import AlumnoAsignaturas from './components/alumnos/AlumnoAsignaturas';
+import AlumnoAsignaturaDetail from './components/alumnos/AlumnoAsignaturaDetail';
+import AlumnoNotas from './components/notas/AlumnoNotas';
 
 function App() {
   return (
@@ -37,6 +39,13 @@ function App() {
             path="/alumnos/:id/asignaturas"
             element={<AlumnoAsignaturas />}
           />
+
+          <Route
+            path="/alumnos/:id/asignaturas/:asignaturaId"
+            element={<AlumnoAsignaturaDetail />}
+          />
+
+          <Route path="/alumnos/:id/notas" element={<AlumnoNotas />} />
 
           <Route
             path="/asignaturas"

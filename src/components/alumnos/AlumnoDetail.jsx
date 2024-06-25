@@ -21,9 +21,16 @@ const AlumnoDetail = () => {
           )}
         />
         <div className="detail">
-          <Link to={`/alumnos/${id}/asignaturas`}>
-            <button className="btn btn-info">Asignaturas del alumno</button>
-          </Link>
+          <div>
+            <Link to={`/alumnos/${id}/asignaturas`}>
+              <button className="btn btn-info">Asignaturas del alumno</button>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/alumnos/${id}/notas`}>
+              <button className="btn btn-info">Notas del alumno</button>
+            </Link>
+          </div>
         </div>
       </div>
     </>
