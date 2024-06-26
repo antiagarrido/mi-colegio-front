@@ -5,6 +5,7 @@ import AddButton from '../comun/buttons/AddButton';
 import DeleteButton from '../comun/buttons/DeleteButton';
 import EditButton from '../comun/buttons/EditButton';
 import FetchData from '../comun/FetchData';
+import BackButton from '../comun/buttons/BackButton';
 
 export const NotasAsignatura = () => {
   const { id } = useParams();
@@ -74,6 +75,7 @@ export const NotasAsignatura = () => {
         }
       />
       <AddButton onClick={() => createNota()} />
+      <BackButton/>
     </div>
   );
 };

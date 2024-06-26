@@ -36,7 +36,7 @@ const NotaForm = () => {
 
   const handleSubmit = (e, data) => {
     e.preventDefault();
-    if (alumnoId) {
+    if (alumnoId && asignaturaId) {
       axios.put('/api/notas', data).then(() => {
         navigate(-1);
       });
