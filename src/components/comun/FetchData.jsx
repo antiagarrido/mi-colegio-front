@@ -2,24 +2,22 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export const FetchData = ({ apiPath, render }) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(apiPath);
+    axios
+      .get(apiPath)
+      .then((response) => {
         setData(response.data);
-      } catch (error) {
+        setCargando(false);
+      })
+      .catch((error) => {
         console.error(`Error obteniendo datos de ${apiPath}`, error);
         setError(error);
-      } finally {
         setCargando(false);
-      }
-    };
-
-    fetchData();
+      });
   }, [apiPath]);
 
   if (cargando) return <p>Cargando...</p>;
@@ -27,5 +25,4 @@ export const FetchData = ({ apiPath, render }) => {
 
   return render(data);
 };
-
 export default FetchData;
