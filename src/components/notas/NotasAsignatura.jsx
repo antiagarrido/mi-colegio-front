@@ -4,6 +4,7 @@ import axios from 'axios';
 import AddButton from '../comun/buttons/AddButton';
 import DeleteButton from '../comun/buttons/DeleteButton';
 import EditButton from '../comun/buttons/EditButton';
+import BackButton from '../comun/buttons/BackButton';
 import FetchData from '../comun/FetchData';
 
 export const NotasAsignatura = () => {
@@ -76,6 +77,7 @@ export const NotasAsignatura = () => {
         }
       />
       <AddButton onClick={() => createNota()} />
+      <BackButton />
     </div>
   );
 };
