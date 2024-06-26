@@ -11,17 +11,19 @@ export const RolForm = () => {
     curso: '',
   });
 
+    useEffect(() => {
+      if (id) {
+        axios.get(`/api/roles/${id}`).then((response) => {
+          setRol(response.data);
+        });
+      }
+    }, [id]);
+
   const fields = [
     { name: 'nombre', type: 'text', placeholder: 'Nombre', required: true },
   ];
 
-  useEffect(() => {
-    if (id) {
-      axios.get(`/api/roles/${id}`).then((response) => {
-        setRol(response.data);
-      });
-    }
-  }, [id]);
+
 
   const handleChange = (e) => {
     setRol({ ...rol, [e.target.name]: e.target.value });
