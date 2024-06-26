@@ -19,7 +19,7 @@ const AlumnosList = () => {
   const deleteAlumno = (id) => {
     if (window.confirm('¿Quieres eliminar este alumno?')) {
       axios.delete(`/api/alumnos/${id}`).then((alumnos) => {
-        setAlumnos(alumnos.filter((alumno) => alumno.id !== id));
+        //recargar
       });
     }
   };

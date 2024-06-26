@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DataTable } from '../comun/list/DataTable';
 import FetchData from '../comun/FetchData';
+import axios from 'axios';
 
 const AsignaturasList = () => {
   const navigate = useNavigate();
@@ -15,11 +16,7 @@ const AsignaturasList = () => {
 
   const deleteAsignatura = (id) => {
     if (window.confirm('¿Quieres eliminar esta asignatura?')) {
-      axios.delete(`/api/asignaturas/${id}`).then(() => {
-        setAsignaturas(
-          asignaturas.filter((asignatura) => asignatura.id !== id)
-        );
-      });
+      axios.delete(`/api/asignaturas/${id}`);
     }
   };
 

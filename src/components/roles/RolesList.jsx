@@ -17,7 +17,7 @@ export const RolesList = () => {
   const deleteRol = (id) => {
     if (window.confirm('¿Quieres eliminar este rol?')) {
       axios.delete(`/api/roles/${id}`).then((roles) => {
-        setRoles(roles.filter((rol) => rol.id !== id));
+        //recargar
       });
     }
   };

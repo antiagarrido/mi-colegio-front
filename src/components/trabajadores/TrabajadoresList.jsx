@@ -19,9 +19,7 @@ const TrabajadoresList = () => {
   const deleteTrabajador = (id) => {
     if (window.confirm('¿Quieres eliminar este trabajador?')) {
       axios.delete(`/api/trabajadores/${id}`).then((trabajadores) => {
-        setTrabajadores(
-          trabajadores.filter((trabajador) => trabajador.id !== id)
-        );
+        //recargar
       });
     }
   };
