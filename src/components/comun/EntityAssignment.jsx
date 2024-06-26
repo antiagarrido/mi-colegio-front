@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import DataTable from '../comun/list/DataTable';
 import { useNavigate } from 'react-router-dom';
+import BackButton from './buttons/BackButton';
 
 // Función para obtener el singular de las entidades
 const getSingular = (tipoEntidad) => {
@@ -123,6 +124,7 @@ const EntityAssignment = ({
             data={elementosAsignados}
             actions={accionesAsignadas}
           />
+          <BackButton />
         </div>
 
         <div className="details">
