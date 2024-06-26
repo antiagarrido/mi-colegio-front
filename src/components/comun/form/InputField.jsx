@@ -1,7 +1,14 @@
-
 import React from 'react';
 
-export const InputField = ({ type, name, value, onChange, placeholder, required }) => {
+export const InputField = ({
+  type,
+  name,
+  value,
+  onChange,
+  placeholder,
+  required,
+  disabled = false,
+}) => {
   return (
     <input
       type={type}
@@ -10,6 +17,7 @@ export const InputField = ({ type, name, value, onChange, placeholder, required 
       onChange={onChange}
       placeholder={placeholder}
       required={required}
+      disabled={disabled}
     />
   );
 };
