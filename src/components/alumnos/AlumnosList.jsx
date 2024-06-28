@@ -3,10 +3,26 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { DataTable } from '../comun/list/DataTable';
 import { CommonColumns } from '../comun/list/CommonColumns';
-import FetchData from '../comun/FetchData';
 
 const AlumnosList = () => {
   const navigate = useNavigate();
+  const [alumnos, setAlumnos] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchAlumnos();
+  }, []);
+
+  const fetchAlumnos = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get('/api/alumnos');
+      setAlumnos(response.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+    setLoading(false);
+  };
 
   const detailsAlumno = (id) => {
     navigate(`/alumnos/${id}`);
@@ -18,9 +34,14 @@ const AlumnosList = () => {
 
   const deleteAlumno = (id) => {
     if (window.confirm('¿Quieres eliminar este alumno?')) {
-      axios.delete(`/api/alumnos/${id}`).then((alumnos) => {
-        //recargar
-      });
+      axios
+        .delete(`/api/alumnos/${id}`)
+        .then(() => {
+          fetchAlumnos(); // recargar los datos después de eliminar
+        })
+        .catch((error) => {
+          console.error('Error deleting data:', error);
+        });
     }
   };
 
@@ -33,17 +54,14 @@ const AlumnosList = () => {
   const actions = [detailsAlumno, editAlumno, null, deleteAlumno, createAlumno];
 
   return (
-    <FetchData
-      apiPath="/api/alumnos"
-      render={(alumnos) => (
-        <>
-          <div className="list">
-            <h3>Lista de alumnos</h3>
-            <DataTable columns={columns} data={alumnos} actions={actions} />
-          </div>
-        </>
+    <div className="list">
+      <h3>Lista de alumnos</h3>
+      {loading ? (
+        <p>Cargando...</p>
+      ) : (
+        <DataTable columns={columns} data={alumnos} actions={actions} />
       )}
-    />
+    </div>
   );
 };
 

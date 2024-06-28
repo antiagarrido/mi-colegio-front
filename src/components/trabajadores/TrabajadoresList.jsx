@@ -3,10 +3,26 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { DataTable } from '../comun/list/DataTable';
 import { CommonColumns } from '../comun/list/CommonColumns';
-import FetchData from '../comun/FetchData';
 
 const TrabajadoresList = () => {
   const navigate = useNavigate();
+  const [trabajadores, setTrabajadores] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchTrabajadores();
+  }, []);
+
+  const fetchTrabajadores = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get('/api/trabajadores');
+      setTrabajadores(response.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+    setLoading(false);
+  };
 
   const detalleTrabajador = (id) => {
     navigate(`/trabajadores/${id}`);
@@ -18,9 +34,14 @@ const TrabajadoresList = () => {
 
   const deleteTrabajador = (id) => {
     if (window.confirm('¿Quieres eliminar este trabajador?')) {
-      axios.delete(`/api/trabajadores/${id}`).then((trabajadores) => {
-        //recargar
-      });
+      axios
+        .delete(`/api/trabajadores/${id}`)
+        .then(() => {
+          fetchTrabajadores(); // recargar los datos después de eliminar
+        })
+        .catch((error) => {
+          console.error('Error deleting data:', error);
+        });
     }
   };
 
@@ -46,27 +67,19 @@ const TrabajadoresList = () => {
   ];
 
   return (
-    <FetchData
-      apiPath="/api/trabajadores"
-      render={(trabajadores) => (
-        <>
-          <div className="list">
-            <h3>Lista de trabajadores</h3>
-            <DataTable
-              columns={columns}
-              data={trabajadores}
-              actions={actions}
-            />
-
-            <div>
-              <button className="btn btn-secondary" onClick={gestionarRoles}>
-                Gestionar Roles
-              </button>
-            </div>
-          </div>
-        </>
+    <div className="list">
+      <h3>Lista de trabajadores</h3>
+      {loading ? (
+        <p>Cargando...</p>
+      ) : (
+        <DataTable columns={columns} data={trabajadores} actions={actions} />
       )}
-    />
+      <div>
+        <button className="btn btn-secondary" onClick={gestionarRoles}>
+          Gestionar Roles
+        </button>
+      </div>
+    </div>
   );
 };
 
