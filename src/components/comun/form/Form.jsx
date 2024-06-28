@@ -20,14 +20,14 @@ const Form = ({
             <Select
               name={field.name}
               value={selectOptions.find(
-                (option) => option.value === data[field.name]?.id
+                (option) => option.value === data[field.name]
               )}
               onChange={(selectedOption) =>
                 handleSelectChange(field.name, selectedOption)
               }
               options={selectOptions}
               placeholder={field.placeholder}
-              required={field.required}
+              isDisabled={field.disabled}
             />
           </div>
         ) : (

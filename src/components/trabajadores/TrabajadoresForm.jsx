@@ -42,9 +42,9 @@ export const TrabajadoresForm = () => {
 
   useEffect(() => {
     axios.get('/api/roles').then((response) => {
-      const rolesOptions = response.data.map((role) => ({
-        value: role.id,
-        label: role.nombre,
+      const rolesOptions = response.data.map((rol) => ({
+        value: rol.id,
+        label: rol.nombre,
       }));
       setRoles(rolesOptions);
     });
