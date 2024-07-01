@@ -37,7 +37,7 @@ export const NotasAsignatura = () => {
         await axios.delete('/api/notas', {
           data: { asignatura_id: id, alumno_id: alumnoId },
         });
-        fetchNotas(); // recargar los datos después de eliminar
+        fetchNotas();
       } catch (error) {
         console.error('Error eliminando la nota:', error);
       }
@@ -45,7 +45,7 @@ export const NotasAsignatura = () => {
   };
 
   const createNota = () => {
-    navigate('/nota/new');
+    navigate(`/nota/asignatura/${id}/new`);
   };
 
   return (
@@ -86,7 +86,6 @@ export const NotasAsignatura = () => {
       ) : (
         <h3>Esta asignatura no tiene notas todavía</h3>
       )}
-      <AddButton onClick={createNota} />
       <BackButton />
     </div>
   );

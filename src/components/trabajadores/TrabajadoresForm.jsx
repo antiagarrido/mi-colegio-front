@@ -88,8 +88,10 @@ export const TrabajadoresForm = () => {
         handleSelectChange={handleSelectChange}
         handleSubmit={handleSubmit}
         selectOptions={roles}
+        defaultValues={{ rol: trabajador.rol.id }}
       />
     </div>
   );
 };
+
 export default TrabajadoresForm;

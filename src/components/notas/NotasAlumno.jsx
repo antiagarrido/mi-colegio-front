@@ -37,7 +37,7 @@ export const NotasAsignatura = () => {
         await axios.delete('/api/notas', {
           data: { asignatura_id: asignaturaId, alumno_id: id },
         });
-        fetchNotas(); // recargar los datos después de eliminar
+        fetchNotas();
       } catch (error) {
         console.error('Error eliminando la nota:', error);
       }

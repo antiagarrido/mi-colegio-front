@@ -10,6 +10,7 @@ const Form = ({
   handleSelectChange,
   handleSubmit,
   selectOptions,
+  defaultValues,
 }) => {
   return (
     <form onSubmit={handleSubmit}>
@@ -20,7 +21,9 @@ const Form = ({
             <Select
               name={field.name}
               value={selectOptions.find(
-                (option) => option.value === data[field.name]
+                (option) =>
+                  option.value === data[field.name]?.id ||
+                  defaultValues[field.name]
               )}
               onChange={(selectedOption) =>
                 handleSelectChange(field.name, selectedOption)

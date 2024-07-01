@@ -31,6 +31,8 @@ const NotaForm = () => {
         setAsignaturas(asignaturasOptions);
         setCargando(false);
       });
+    } else {
+      navigate(-1);
     }
   }, [alumnoId, asignaturaId]);
 

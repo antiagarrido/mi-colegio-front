@@ -68,7 +68,7 @@ function App() {
             path="/nota/edit/:alumnoId/:asignaturaId"
             element={<NotaForm />}
           />
-           <Route path="/nota/alumnos/:alumnoId/new" element={<NotaForm />} /> 
+          <Route path="/nota/alumnos/:alumnoId/new" element={<NotaForm />} />
 
           {<Route path="/*" element={<Navigate to="/" />} />}
         </Routes>

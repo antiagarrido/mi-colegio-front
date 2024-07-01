@@ -36,7 +36,7 @@ export const RolesList = () => {
       axios
         .delete(`/api/roles/${id}`)
         .then(() => {
-          fetchRoles(); // recargar los datos después de eliminar
+          fetchRoles();
         })
         .catch((error) => {
           console.error('Error deleting data:', error);

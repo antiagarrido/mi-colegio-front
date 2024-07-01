@@ -37,7 +37,7 @@ const TrabajadoresList = () => {
       axios
         .delete(`/api/trabajadores/${id}`)
         .then(() => {
-          fetchTrabajadores(); // recargar los datos después de eliminar
+          fetchTrabajadores(); 
         })
         .catch((error) => {
           console.error('Error deleting data:', error);
