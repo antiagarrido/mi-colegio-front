@@ -43,6 +43,7 @@ const NotaForm = () => {
       placeholder: alumnoId,
       required: true,
       disabled: true,
+      hidden: true,
     },
     {
       name: 'nota',
@@ -59,6 +60,7 @@ const NotaForm = () => {
       placeholder: 'Selecciona una asignatura',
       required: true,
       disabled: false,
+      hidden: true,
     });
   } else {
     fields.push({
@@ -89,13 +91,13 @@ const NotaForm = () => {
     }
   };
 
-  const handleSelectChange = (name, selectedOption) => {
+  const handleSelectChange = (name, value) => {
     const [_, key] = name.split('.');
     setNota((prevNota) => ({
       ...prevNota,
       id: {
         ...prevNota.id,
-        [key]: selectedOption.value,
+        [key]: value.value,
       },
     }));
   };
@@ -145,6 +147,10 @@ const NotaForm = () => {
         handleSelectChange={handleSelectChange}
         handleSubmit={handleSubmit}
         selectOptions={asignaturas}
+        defaultValues={{
+          'id.alumno_id': alumnoId,
+          'id.asignatura_id': asignaturaId,
+        }}
       />
     </div>
   );

@@ -8,6 +8,7 @@ export const InputField = ({
   placeholder,
   required,
   disabled = false,
+  hidden = false,
 }) => {
   return (
     <input
@@ -18,6 +19,7 @@ export const InputField = ({
       placeholder={placeholder}
       required={required}
       disabled={disabled}
+      hidden={hidden}
     />
   );
 };

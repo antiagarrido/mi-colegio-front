@@ -22,8 +22,8 @@ const Form = ({
               name={field.name}
               value={selectOptions.find(
                 (option) =>
-                  option.value === data[field.name]?.id ||
-                  defaultValues[field.name]
+                  option.value ===
+                  (data[field.name]?.id || defaultValues[field.name])
               )}
               onChange={(selectedOption) =>
                 handleSelectChange(field.name, selectedOption)
@@ -38,7 +38,7 @@ const Form = ({
             key={field.name}
             type={field.type}
             name={field.name}
-            value={data[field.name]}
+            value={data[field.name] || ''}
             onChange={handleChange}
             placeholder={field.placeholder}
             required={field.required}
